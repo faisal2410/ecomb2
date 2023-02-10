@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
-const Menu=()=> {
+const Menu = () => {
+  
   return (
     <>
       <ul className="nav d-flex justify-content-between shadow-sm mb-2">

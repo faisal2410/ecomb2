@@ -1,7 +1,10 @@
 const Jumbotron=({
   title,
   subTitle = "Welcome to React E-commerce",
-})=> {
+}) => {
+  
+
+  
   return (
     <div
       className="container-fluid jumbotron"
