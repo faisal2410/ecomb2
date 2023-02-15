@@ -2,10 +2,12 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 
-const Menu=()=> {
-  // hooks
-  const [auth, setAuth] = useAuth();
-  const navigate = useNavigate();
+
+const Menu = () => {
+  // context
+  const [auth, setAuth] = useAuth(); 
+  // hooks  
+  const navigate = useNavigate(); 
 
   const logout = () => {
     setAuth({ ...auth, user: null, token: "" });
@@ -15,13 +17,14 @@ const Menu=()=> {
 
   return (
     <>
-      <ul className="nav d-flex justify-content-between shadow-sm mb-2">
+      <ul className="nav d-flex justify-content-between shadow-sm mb-2 sticky-top bg-light">
         <li className="nav-item">
           <NavLink className="nav-link" aria-current="page" to="/">
             HOME
           </NavLink>
         </li>
 
+ 
         {!auth?.user ? (
           <>
             <li className="nav-item">
@@ -36,11 +39,34 @@ const Menu=()=> {
             </li>
           </>
         ) : (
-          <li className="nav-item pointer">
-            <a onClick={logout} className="nav-link">
-              LOGOUT
-            </a>
-          </li>
+          <div className="dropdown">
+            <li>
+              <a
+                className="nav-link pointer dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                {auth?.user?.name?.toUpperCase()}
+              </a>
+
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"
+                      }`}
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+
+                <li className="nav-item pointer">
+                  <a onClick={logout} className="nav-link">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </div>
         )}
       </ul>
     </>
