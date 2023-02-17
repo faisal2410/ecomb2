@@ -8,6 +8,8 @@ import Dashboard from "./pages/user/Dashboard";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminCategory from "./pages/admin/Category";
 import AdminProduct from "./pages/admin/Product";
+import UserOrders from "./pages/user/Orders";
+import UserProfile from "./pages/user/Profile";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 
@@ -30,6 +32,8 @@ const App=()=> {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
+          <Route path="user/profile" element={<UserProfile />} />
+          <Route path="user/orders" element={<UserOrders />} />
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
@@ -42,5 +46,4 @@ const App=()=> {
     </BrowserRouter>
   );
 }
-
 export default App;
