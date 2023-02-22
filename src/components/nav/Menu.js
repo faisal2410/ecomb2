@@ -1,13 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
+import useCategory from "../../hooks/useCategory";
 
+import { Badge } from "antd";
 
 const Menu = () => {
   // context
-  const [auth, setAuth] = useAuth(); 
-  // hooks  
-  const navigate = useNavigate(); 
+  const [auth, setAuth] = useAuth();
+ 
+  // hooks
+  const categories = useCategory();
+  const navigate = useNavigate();
+
+  // console.log("categories in menu => ", categories);
 
   const logout = () => {
     setAuth({ ...auth, user: null, token: "" });
@@ -22,9 +28,41 @@ const Menu = () => {
           <NavLink className="nav-link" aria-current="page" to="/">
             HOME
           </NavLink>
-        </li>
+        </li>       
 
- 
+        <div className="dropdown">
+          <li>
+            <a
+              className="nav-link pointer dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              CATEGORIES
+            </a>
+
+            <ul
+              className="dropdown-menu"
+              style={{ height: "300px", overflow: "scroll" }}
+            >
+              <li>
+                <NavLink className="nav-link" to="/categories">
+                  All Categories
+                </NavLink>
+              </li>
+
+              {categories?.map((c) => (
+                <li key={c._id}>
+                  <NavLink className="nav-link" to={`/category/${c.slug}`}>
+                    {c.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </li>
+        </div>
+
+      
+   
+
         {!auth?.user ? (
           <>
             <li className="nav-item">

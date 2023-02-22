@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import CategoryForm from "../../components/forms/CategoryForm";
 import { Modal } from "antd";
 
-const AdminCategory=()=> {
+const AdminCategory = () => {
   // context
   const [auth, setAuth] = useAuth();
   // state
@@ -50,9 +50,38 @@ const AdminCategory=()=> {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      console.log("update cateogry => ", updatingName);
+      const { data } = await axios.put(`/category/${selected._id}`, {
+        name: updatingName,
+      });
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        toast.success(`"${data.name}" is updated`);
+        setSelected(null);
+        setUpdatingName("");
+        loadCategories();
+        setVisible(false);
+      }
     } catch (err) {
       console.log(err);
+      toast.error("Category may already exist. Try again.");
+    }
+  };
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(`/category/${selected._id}`);
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        toast.success(`"${data.name}" is deleted`);
+        setSelected(null);
+        loadCategories();
+        setVisible(false);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Category may already exist. Try again.");
     }
   };
 
@@ -105,6 +134,8 @@ const AdminCategory=()=> {
                 value={updatingName}
                 setValue={setUpdatingName}
                 handleSubmit={handleUpdate}
+                buttonText="Update"
+                handleDelete={handleDelete}
               />
             </Modal>
           </div>
