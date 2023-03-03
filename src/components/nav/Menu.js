@@ -28,7 +28,12 @@ const Menu = () => {
           <NavLink className="nav-link" aria-current="page" to="/">
             HOME
           </NavLink>
-        </li>       
+        </li> 
+        <li className="nav-item">
+          <NavLink className="nav-link" aria-current="page" to="/shop">
+            SHOP
+          </NavLink>
+        </li>
 
         <div className="dropdown">
           <li>
