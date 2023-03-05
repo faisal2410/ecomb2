@@ -13,6 +13,7 @@ import AdminProductUpdate from "./pages/admin/ProductUpdate";
 import UserOrders from "./pages/user/Orders";
 import UserProfile from "./pages/user/Profile";
 import Shop from "./pages/Shop";
+import Search from "./pages/Search";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 
@@ -32,6 +33,7 @@ const App=()=> {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<PrivateRoute />}>

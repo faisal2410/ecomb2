@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
+import Search from "../forms/Search";
 
 import { Badge } from "antd";
 
@@ -66,7 +67,7 @@ const Menu = () => {
         </div>
 
       
-   
+        <Search />
 
         {!auth?.user ? (
           <>
