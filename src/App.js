@@ -17,6 +17,7 @@ import Search from "./pages/Search";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 import ProductView from "./pages/ProductView";
+import Cart from "./pages/Cart";
 
 const PageNotFound = () => {
   return (
@@ -35,6 +36,7 @@ const App=()=> {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

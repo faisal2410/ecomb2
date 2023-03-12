@@ -31,7 +31,7 @@ const ProductView=()=> {
     if (params?.slug) loadProduct();
   }, [params?.slug]);
 
-  const loadProduct = async (req, res) => {
+  const loadProduct = async () => {
     try {
       const { data } = await axios.get(`/product/${params.slug}`);
       setProduct(data);

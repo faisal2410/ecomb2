@@ -3,12 +3,14 @@ import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
 import Search from "../forms/Search";
+import { useCart } from "../../context/cart";
 
 import { Badge } from "antd";
 
 const Menu = () => {
   // context
   const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart();
  
   // hooks
   const categories = useCategory();
@@ -65,7 +67,17 @@ const Menu = () => {
             </ul>
           </li>
         </div>
-
+        <li className="nav-item mt-1">
+          <Badge
+            count={cart?.length >= 1 ? cart.length : 0}
+            offset={[-5, 11]}
+            showZero={true}
+          >
+            <NavLink className="nav-link" aria-current="page" to="/cart">
+              CART
+            </NavLink>
+          </Badge>
+        </li>
       
         <Search />
 
