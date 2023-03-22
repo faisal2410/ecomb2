@@ -2,8 +2,8 @@ import { useAuth } from "../context/auth";
 import { useCart } from "../context/cart";
 import Jumbotron from "../components/cards/Jumbotron";
 import { useNavigate } from "react-router-dom";
-// import UserCartSidebar from "../components/cards/UserCartSidebar";
-// import ProductCardHorizontal from "../components/cards/ProductCardHorizontal";
+import UserCartSidebar from "../components/cards/UserCartSidebar";
+import ProductCardHorizontal from "../components/cards/ProductCardHorizontal";
 
 const Cart=()=> {
   // context
@@ -49,14 +49,14 @@ const Cart=()=> {
         <div className="container">
           <div className="row">
             <div className="col-md-8">
-              {/* <div className="row">
+              <div className="row">
                 {cart?.map((p, index) => (
                   <ProductCardHorizontal key={index} p={p} />
                 ))}
-              </div> */}
+              </div>
             </div>
 
-            {/* <UserCartSidebar /> */}
+            <UserCartSidebar />
           </div>
         </div>
       )}

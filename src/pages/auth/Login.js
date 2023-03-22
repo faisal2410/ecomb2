@@ -29,6 +29,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Login successful");
+    
         navigate(
           location.state ||
           `/dashboard/${data?.user?.role === 1 ? "admin" : "user"}`
